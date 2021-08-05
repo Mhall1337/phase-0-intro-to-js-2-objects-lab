@@ -1,24 +1,19 @@
-// Write your solution in this file!
-const employee = {
-    'name': 'Sam',
-    'streetAddress': '555 gerald way'
-};
+const employee = {}
 
-function   updateEmployeeWithKeyAndValue(employee, key, value){
-    const newObj = { ...employee };
-    newObj[key] = value;
-    return newObj;
-}
-function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value){
-    employee.streetAddress='12 Broadway';
-    return employee;
-}
-function deleteFromEmployeeByKey(employee, key){
-    const cloneObj = {...employee};
-    delete cloneObj.name;
+function updateEmployeeWithKeyAndValue(employee, key, value){
+    const cloneObj = Object.assign({}, employee);
+    cloneObj[key] = value;
     return cloneObj;
 }
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value){
+    return Object.assign(employee, {[key]:value})
+}
+function deleteFromEmployeeByKey(employee, key){
+    const cloneObj = Object.assign({}, employee)
+    delete cloneObj[key]
+    return cloneObj
+}
 function destructivelyDeleteFromEmployeeByKey(employee, key){
-    delete  employee.name;
+    delete employee[key]
     return employee
 }
